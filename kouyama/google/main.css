@@ -1,0 +1,42 @@
+html, body, #main {
+    height: 100%;
+}
+
+#main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#logo{
+    height:130px;
+}
+form{
+    text-align: center;
+}
+#box{
+    height:40px;
+    width:584px;
+    box-shadow: 1px 1px 1px 1px #00000005;
+}
+button{
+    height:30px;
+    width:150px;
+    background-color: #f2f2f2;
+    border: 1px solid #f2f2f2;
+    border-radius: 2px;
+    color: #757575;
+    font-family: arial,sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+}
+button:hover{
+    height:30px;
+    width:150px;
+    box-sizing: border-box;
+    background-color:#f2f2f2;
+    border: 1px solid #f2f2f2;
+    border-radius: 2px;
+    color: buttontext;
+}
+

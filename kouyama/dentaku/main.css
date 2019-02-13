@@ -1,0 +1,24 @@
+html,body,#main{
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+}
+
+input{
+    background: #555555;
+    color: rgb(118, 191, 255);
+    padding: 10px 30px;
+}
+input:hover{
+    background: #c4c4c4;
+}
+#calSpace{
+    height: 20px;
+    width: 270px;
+    font-size: 15px;
+    text-align: right;
+    color: aliceblue;
+    background: black;
+}

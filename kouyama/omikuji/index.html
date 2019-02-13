@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="main.css">
+    <title>おみくじ</title> 
+    <script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+</head>
+<body>
+    <h1>おみくじ</h1>
+    <p id="text">~おみくじを引いて運勢を占いましょう!~</p>
+    <p id="text">画像か「おみくじを引く」ボタンをクリック</p>
+    <div id="main">
+        <p id="resultpicture"><img id="omikujistart" src="syougatsu2_omijikuji2.png"  height="400" alt="omikuji" title="おみくじ"></p>
+        <p><input id="omikujibutton" type="button" value="おみくじを引く"></p>
+        <div id="result"></div>
+    </div>
+    <script src="omikuji.js"></script>
+</body>
+</html>

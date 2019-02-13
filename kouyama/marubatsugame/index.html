@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="main.css">
+    <title>marubatsugame</title>
+    <script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+</head>
+<body>
+    <h1>まるばつゲーム</h1>
+    <div class="table">
+    <table id="marubatsutable">
+        <tr><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td></tr>
+		<!-- <tbody>
+			<tr><td id="a1"></td><td id="a2"></td><td id="a3"></td></tr>
+			<tr><td id="a4"></td><td id="a5"></td><td id="a6"></td></tr>
+			<tr><td id="a7"></td><td id="a8"></td><td id="a9"></td></tr>
+		</tbody> -->
+    </table>
+    </div>
+    <p id="winner"></p>
+    <div class="table">
+    <table>
+        <tr><td>現在</td><td id="gameCount">1戦目</td><td id="turn">○のターンです</td></tr>
+        <tr></tr>
+        <tr><td id="kekkaM">○：0勝</td><td id="kekkaB"> ×：0勝</td><td id="hikiwake">引き分け：0回</td></tr>
+    </table>
+    </div>
+
+    <script src="marubatsu.js"></script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+html, body, #main {
+    height: 100%;
+}
+body {
+    background-color: purple;
+} 
+h1,#main,#text{
+    text-align: center;
+}
+h1{
+    font-size: 100px;
+}
+#omikujibutton{
+    height:30px;
+    width:150px;
+    background-color: #f2f2f2;
+    border: 1px solid #f2f2f2;
+    border-radius: 2px;
+    color: #757575;
+    font-family: arial,sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+}
+#omikujibutton:hover{
+    height:30px;
+    width:150px;
+    box-sizing: border-box;
+    background-color:#f2f2f2;
+    border: 1px solid #f2f2f2;
+    border-radius: 2px;
+    color: buttontext;
+}
