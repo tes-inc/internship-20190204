@@ -1,0 +1,86 @@
+html, body, #main {
+    height: 100%;
+   }
+
+#main{
+    justify-content: center;
+    align-items: center;
+
+}
+
+#logo{
+    height: 90px;
+}
+
+#startNum,#finishNum{
+    height: 40px;
+    width: 100px;
+    box-shadow: 0px 1px 9px #00000040;
+    border: #666;
+    border-radius: 10px;
+}
+
+#button_1{
+   height: 34px;
+    width: 100px;
+    margin-top: 30px;
+    color: black;
+    border: none;
+    background-color: rgb(59, 89, 187);
+    font-weight: bold;
+    font-size: 13px;
+    border-radius: 10px;
+}
+
+#fizzbuzz{
+    text-align: center;
+    
+}
+
+#button_1:hover{
+    color: white;
+    border: 1px solid rgb(253, 251, 251);
+    background-color: rgb(59, 89, 187);
+}
+
+#error{
+    color: red;
+    font-size: 30px;
+    text-align: center;
+}
+
+.fizzbuzz{
+    background-color: blue;
+    font-weight: bold;
+}
+
+.fizz{
+    background-color: coral;
+    font-weight: bold;
+}
+
+.buzz{
+    background-color: chartreuse;
+    font-weight: bold;
+}
+
+span {
+    border-radius: 3px;
+    width: 80px;
+    height: 20px;
+    padding: 5px;
+    margin: 5px;
+    float: left;
+    text-align: center;
+    background-color: rgb(202, 201, 201);
+    display: none;
+    font-weight: bold;
+}
+
+hr{
+    margin: 30px 0;
+}
+
+*:focus {
+outline: none;
+}
