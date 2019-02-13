@@ -1,0 +1,26 @@
+h1{
+    color: aliceblue
+}
+body{
+    height: 100%;
+    background-color: lightskyblue;
+    color: darkslategray;
+    text-align: center;
+}
+div.table{
+    width: fit-content;
+    margin: auto;
+}
+table#marubatsutable td {
+	width: 120px;
+	height: 120px;
+	font-size: 80px;
+	border: 1px solid rgb(17, 0, 80);
+    text-align:center;
+    background-color: cornflowerblue;
+    color: azure
+}
+p#winner{
+    font-size: 1.5em;
+    color: rgb(255, 239, 100);
+}

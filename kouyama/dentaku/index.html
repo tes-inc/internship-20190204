@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>calculation</title>
+    <link rel="stylesheet" href="main.css">
+    <script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div id="main">
+    <h1>電卓</h1>
+        <form id="form1" action="">
+            <INPUT TYPE="text" id="calSpace" value="">
+        <P>
+            <INPUT TYPE="button" VALUE=" ７ " onClick="calc('7')">
+            <INPUT TYPE="button" VALUE=" ８ " onClick="calc('8')">
+            <INPUT TYPE="button" VALUE=" ９ " onClick="calc('9')">
+            <INPUT TYPE="button" VALUE=" ＊ " onClick="calc('*')">
+        </p>
+        <P>
+            <INPUT TYPE="button" VALUE=" ４ " onClick="calc('4')">
+            <INPUT TYPE="button" VALUE=" ５ " onClick="calc('5')">
+            <INPUT TYPE="button" VALUE=" ６ " onClick="calc('6')">
+            <INPUT TYPE="button" VALUE=" ／ " onClick="calc('/')">
+        </p>
+        <P>
+            <INPUT TYPE="button" VALUE=" １ " onClick="calc('1')">
+            <INPUT TYPE="button" VALUE=" ２ " onClick="calc('2')">
+            <INPUT TYPE="button" VALUE=" ３ " onClick="calc('3')">
+            <INPUT TYPE="button" VALUE=" － " onClick="calc('-')">
+        </p>
+        <P>
+            <INPUT TYPE="button" VALUE=" ０ " onClick="calc('0')">
+            <INPUT TYPE="button" VALUE=" Ｃ " onClick="calc('C')">
+            <INPUT TYPE="button" VALUE=" ＝ " onClick="calc('=')">
+            <INPUT TYPE="button" VALUE=" ＋ " onClick="calc('+')">
+        </p>
+        </form>
+    </div>
+<script src="calculation.js"></script>
+</body>
+</html>
