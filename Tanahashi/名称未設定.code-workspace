@@ -1,0 +1,23 @@
+{
+	"folders": [
+		{
+			"path": "google"
+		},
+		{
+			"path": "FizzBuzz"
+		},
+		{
+			"path": "omikuji"
+		},
+		{
+			"path": "game"
+		},
+		{
+			"path": "calculator"
+		},
+		{
+			"path": "movie"
+		}
+	],
+	"settings": {}
+}
