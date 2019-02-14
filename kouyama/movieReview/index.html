@@ -13,8 +13,8 @@
 </head>
 <body>    
     <div id="main">
-        <h1>オススメしたい映画達</h1>
-        <div>みんなに薦めたい映画を紹介してください！</div>
+        <h1>オススメ映画のオスソワケ</h1>
+        <div>みんなにオススメしたい映画を紹介してください！</div>
         <form action="">
             <span>題名</span>
             <input id="title" type="text" required>
@@ -34,11 +34,16 @@
             <div>
                 <textarea name="" id="review" placeholder="こちらにオススメ理由を入力してください" cols="100" rows="10"></textarea>
             </div>
+            <div id="sort">
+                <span>オススメ度ソート</span>
+                <label><input id="defaultSort" type="radio" name="example" value="投稿順" value="投稿順" checked>投稿順</label>
+                <label><input id="asSort" type="radio" name="example" value="昇順">昇順</label>
+                <label><input id="desSort" type="radio" name="example" value="降順">降順</label>
+            </div>
             <input id="send" type="button" value="送信">
-
         </form>
         <hr>
-        <div id="recorded"></div>
+        <div id="recordedData"></div>
 
     </div>
     <script src="movieReview.js"></script>

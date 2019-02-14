@@ -8,8 +8,8 @@ html,body,#main{
     text-align: center;
 }
 #send{
-    display: inline-block;
     padding: 0.5em 1em;
+    margin-left: 100px;
     text-decoration: none;
     background: #668ad8;/*ボタン色*/
     color: #FFF;
@@ -22,4 +22,16 @@ html,body,#main{
     transform: translateY(4px);/*下に動く*/
     box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/
     border-bottom: none;
+}
+h1{
+    color: rgb(185, 253, 255);
+}
+#recordedTitle{
+    font-weight:bold;
+    font-size:x-large;  
+    color: white;
+}
+#sort{
+    display: inline;
+    text-align: left;
 }
