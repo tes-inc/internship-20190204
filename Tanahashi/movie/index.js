@@ -23,7 +23,7 @@ $(function(){
 			'<input  type="text" name="title" id="title" value="%s" readonly="readonly" placeholder="title">'+
             '<input type="date" name="" id="date" value="%s" readonly="readonly">'+
             '<input  type="text" name="points" id="points" value="%s" placeholder="score" readonly="readonly">'+
-            '<textarea id="memo" placeholder="感想を入力してください。" readonly="readonly">%s</textarea><hr>';
+			'<textarea id="memo" placeholder="感想を入力してください。" readonly="readonly">%s</textarea><hr>';
             template = template.replace('%s',ttl).replace('%s',date).replace('%s',points).replace('%s',memo);
             
 		$("#history").append(template);
@@ -78,11 +78,11 @@ $(function(){
 	//ページ読込み時にメモ復帰
 	readMemo();
 
-	
 	$("#btnAdd").on('click',function(){
 		add();
 	});
 	$("#btnReset").on('click',function(){
 		resetMemo();
 	});
+   
 });

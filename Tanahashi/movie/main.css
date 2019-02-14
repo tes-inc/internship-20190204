@@ -1,12 +1,13 @@
 html, body, #main {
-    height: 100%;
+    width: 100%;
     display: flex;
     justify-content: center;
 }
 
 body{
     background-image: url("cinemas.png");
-    background-size: cover;
+    background-size: 100%;
+    background-repeat: no-repeat;
 }
 
 h1{
@@ -78,15 +79,15 @@ input{
     text-align: center;
     padding-left: 50px;
     width: 400px;
-    background-color: white;
+    background: linear-gradient(rgba(255, 255, 255, 0.616),rgba(230, 241, 241, 0.616),rgba(190, 221, 221, 0.74));
 
 }
 #history{
-    height: 200%;
+    height: 100%;
     margin-top: 105px;
     padding-right: 50px;
-    display: block;
-    background-color: white;
+    display: inline-block;
+    background: linear-gradient(rgba(255, 255, 255, 0.616),rgba(230, 241, 241, 0.616),rgba(190, 221, 221, 0.74));
 }
 #history #memo{
     border: none;
