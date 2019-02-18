@@ -4,14 +4,15 @@ let defaultArray = []; // 投稿順にオブジェクトが入っている配列
 $("#send").click(function() { // 「送信」ボタンが押された時
   if ($("#title").val() === "" || $("#rate").val() === "" || $("#name").val() === "") {
     alert("入力されていない項目があります");
-  } else {
-    if (window.confirm("送信してよろしいですか？")) {	// 「OK」時の処理開始 ＋ 確認ダイアログの表示
-      save(); // formに入力されたデータをlocalStorageに保存する
-      localArray = JSON.parse(localStorage.getItem("obj")); // localStorageから文字列を取得してJSON形式へ変換
-      display(); // 保存されたデータを表示する関数
-    } else { // 「キャンセル」時の処理開始
-      window.alert("キャンセルされました"); // 警告ダイアログを表示
-    }
+    return;
+  }
+
+  if (window.confirm("送信してよろしいですか？")) {	// 「OK」時の処理開始 ＋ 確認ダイアログの表示
+    save(); // formに入力されたデータをlocalStorageに保存する
+    localArray = JSON.parse(localStorage.getItem("obj")); // localStorageから文字列を取得してJSON形式へ変換
+    display(); // 保存されたデータを表示する関数
+  } else { // 「キャンセル」時の処理開始
+    window.alert("キャンセルされました"); // 警告ダイアログを表示
   }
 });
 
