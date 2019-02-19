@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="main.css">
+  <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous">
+  </script>
+
+  <title>resNavi</title>
+</head>
+<body>
+  <div id="main">
+    <h1>レストラン検索サイト(仮)</h1>
+    <form action="send" method="GET">
+      <span>店名</span>
+      <input id="searchName" name="name" type="text" placeholder="店名を入力してください">
+      <span>キーワード検索</span>
+      <input id="keyWord" name="keyWord" type="text" placeholder="料理名、食材等">
+      <input id="search" name="submit" type="button" value="検索">
+      <input id="nearStore" name="nearStore" type="button" value="近くの店舗を検索">
+    </form>
+    <br><br><hr>
+
+    <div id="searchResults"></div>
+
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
