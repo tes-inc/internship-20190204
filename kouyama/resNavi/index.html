@@ -23,6 +23,18 @@
       <input id="freeWord" name="freeWord" type="text" placeholder="料理名、地名等">
       <input id="search" name="submit" type="button" value="検索">
       <input id="nearStore" name="nearStore" type="button" value="近くの店舗を検索">
+      <select id="range" name="range" required>
+        <option value="1">300m以内</option>
+        <option value="2" selected>500m以内</option>
+        <option value="3">1000m以内</option>
+        <option value="4">2000m以内</option>
+        <option value="5">3000m以内</option>
+    </select>
+    <div>
+      <input id="nextPage" name="nextPage" type="button" value="nextPage">
+      <input id="return" type="button" value="returnPage">
+
+    </div>
     </form>
     <br><br><hr>
 
