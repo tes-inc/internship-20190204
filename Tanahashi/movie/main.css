@@ -1,106 +1,106 @@
 html, body, #main {
-    width: 100%;
-    display: flex;
-    justify-content: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 body{
-    background-image: url("cinemas.png");
-    background-size: 100%;
-    background-repeat: no-repeat;
+  background-image: url("cinemas.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
 }
 
 h1{
-    font-family:'Times New Roman', Times, serif;
-    color: #000;
-    font-size: 50px;
-    font-weight: bold;
-    text-shadow: 5px 5px 1px #999999;
+  font-family:'Times New Roman', Times, serif;
+  color: #000;
+  font-size: 50px;
+  font-weight: bold;
+  text-shadow: 5px 5px 1px #999999;
 }
 
 #btnAdd,#btnReset{
-   height: 34px;
-    width: 100px;
-    margin-top: 30px;
-    color: black;
-    background-color: rgba(90, 49, 11, 0.767);
-    font-weight: bold;
-    font-size: 13px;
-    text-align: center;
-    border-collapse: collapse;
-    display: inline-block;
-    padding: 0.5em 1em;
-    text-decoration: none;
-    border-radius: 3px;
+  height: 34px;
+  width: 100px;
+  margin-top: 30px;
+  color: black;
+  background-color: rgba(90, 49, 11, 0.767);
+  font-weight: bold;
+  font-size: 13px;
+  text-align: center;
+  border-collapse: collapse;
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  border-radius: 3px;
 }
 
 #btnAdd:active,#btnReset:active{
-    -webkit-transform: translateY(4px);
-    transform: translateY(4px);/*下に動く*/
-    border-bottom: none;/*線を消す*/
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);/*下に動く*/
+  border-bottom: none;/*線を消す*/
   }
 
 p{
-    display: inline;
+  display: inline;
 }
 
 template{
-    background-color: white;
+  background-color: white;
 }
 .name{
-    margin-left: 150px;
+  margin-left: 150px;
 }
 
 textarea{
-    width: 300px;
-    height: 150px;
-    font-size: 15px;
+  width: 300px;
+  height: 150px;
+  font-size: 15px;
 }
 
 input{
-    font-size: 18px;
-    margin-bottom: 10px;
+  font-size: 18px;
+  margin-bottom: 10px;
 }
 
 #date{
-    width: 150px;
+  width: 150px;
 }
 
 #points{
-    width: 100px;
+  width: 100px;
 }
 #title{
-    width: 250px;
+  width: 250px;
 }
 
 #box{
-    margin-top: 105px;
-    height: 100%;
-    text-align: center;
-    padding-left: 50px;
-    width: 400px;
-    background: linear-gradient(rgba(255, 255, 255, 0.616),rgba(230, 241, 241, 0.616),rgba(190, 221, 221, 0.74));
+  margin-top: 105px;
+  height: 100%;
+  text-align: center;
+  padding-left: 50px;
+  width: 400px;
+  background: linear-gradient(rgba(255, 255, 255, 0.616),rgba(230, 241, 241, 0.616),rgba(190, 221, 221, 0.74));
 
 }
 #history{
-    height: 100%;
-    margin-top: 105px;
-    padding-right: 50px;
-    display: inline-block;
-    background: linear-gradient(rgba(255, 255, 255, 0.616),rgba(230, 241, 241, 0.616),rgba(190, 221, 221, 0.74));
+  height: 100%;
+  margin-top: 105px;
+  padding-right: 50px;
+  display: inline-block;
+  background: linear-gradient(rgba(255, 255, 255, 0.616),rgba(230, 241, 241, 0.616),rgba(190, 221, 221, 0.74));
 }
 #history #memo{
-    border: none;
-    margin-left: 15px;
-    font-weight: bold;
+  border: none;
+  margin-left: 15px;
+  font-weight: bold;
 }
 #history input{
-    font-size: 18px;
-    width: 190px;
-    border: none;
-    font-weight: bold;
+  font-size: 18px;
+  width: 190px;
+  border: none;
+  font-weight: bold;
 }
 
 *:focus {
-outline: none;
+  outline: none;
 }
