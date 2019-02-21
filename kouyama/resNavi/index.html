@@ -16,7 +16,7 @@
 <body>
   <div id="main">
     <h1>レストラン検索サイト(仮)</h1>
-    <form action="send" method="GET">
+    <form method="GET">
       <span>店名</span>
       <input id="searchName" name="name" type="text" placeholder="店名を入力してください">
       <span>フリーワード検索</span>
@@ -31,13 +31,19 @@
         <option value="5">3000m以内</option>
     </select>
     <div>
-      <input id="nextPage" name="nextPage" type="button" value="nextPage">
-      <input id="return" type="button" value="returnPage">
-
+      <input id="returnPage" type="button" value="returnPage">
+      <!-- <span id="pageNumber"></span> -->
+      <span id="pageNumbers"></span>
+      <input id="nextPage" type="button" value="nextPage">
     </div>
+    <div>
+      <span id="totalHitCount"></span>
+      <span id="hit_per_page"></span>
+    </div>
+
     </form>
     <br><br><hr>
-
+    <div id="loading" class="hide"></div>
     <div id="searchResults"></div>
 
   </div>
