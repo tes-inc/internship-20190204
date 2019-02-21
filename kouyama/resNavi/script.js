@@ -42,7 +42,6 @@ $('#nearStore').on('click', function() {
   });
 })
 
-// pageボタンが押された時の処理
 // 次の10件を表示
 $('#nextPage').on('click', function() {
   if (page >= Math.ceil($totalHitCount/10)) { // 表示したいページが検索結果のページ数より多くなる時
@@ -56,7 +55,6 @@ $('#nextPage').on('click', function() {
 // 前の10件を表示
 $('#returnPage').on('click', function() {
   if (page <= 1) {
-    // page = 1;
     return;
   }
   page--;
@@ -112,7 +110,7 @@ function display(data) {
   // 検索結果のページの数字を表示
   for (let i = 1; i <= Math.ceil($totalHitCount/10); i++) {
     $('#pageNumbers').append(`
-      <span id="page${i}">${i}</span>
+      <input type="button" id="page${i}" onClick="clickNumber(${i})" value="${i}"></input>
     `)
     if(i === data.page_offset){ // 現在表示されているページの数字ならば
       $(`#page${i}`).addClass('strong'); // 強調
@@ -144,4 +142,11 @@ function display(data) {
       <hr>
     `)
   });
+}
+
+// ページ数をクリックされた時の処理
+function clickNumber(num) { // クリックされたボタンの数字を引数で受け取る
+  page = num; // ページ数に格納
+  data.offset_page = page // 検索開始ページをプロパティに追加
+  ajax();
 }
