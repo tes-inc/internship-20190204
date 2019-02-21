@@ -18,34 +18,33 @@ $(function(){
   };
 
   let addMemo = function(ttl,date,points,memo){
-  let template =
-    '<p>title:</p><p class="name">date:</p><p class="name">score:</p><p class="name">coment:</p><br>'+
-    '<input  type="text" name="title" id="title" value="%s" readonly="readonly" placeholder="title">'+
-    '<input type="date" name="" id="date" value="%s" readonly="readonly">'+
-    '<input  type="text" name="points" id="points" value="%s" placeholder="score" readonly="readonly">'+
-    '<textarea id="memo" placeholder="感想を入力してください。" readonly="readonly">%s</textarea><hr>';
-  template = template.replace('%s',ttl).replace('%s',date).replace('%s',points).replace('%s',memo);
+    let template =
+      '<p>Date:</p><input type="date" name="" id="date" value="%s" readonly="readonly">'+
+      '<p id="p">Score:</p><input type="number" name="points" id="points" placeholder="0~100点" min="0" max="100" value="%s" readonly="readonly"><br>'+
+      '<p>Title:</p><textarea id="title" placeholder="title" cols="14" rows="3" readonly="readonly">%s</textarea>'+
+      '<p>Comment:</p><textarea id="memo" placeholder="感想を入力してください。" readonly="readonly">%s</textarea><hr>';
+    template = template.replace('%s',date).replace('%s',points).replace('%s',ttl).replace('%s',memo);
 
-  $("#history").append(template);
+    $("#history").append(template);
 
-  $("#box #title").val('');
-  $("#box #date").val('');
-  $("#box #points").val('');
-  $("#box #memo").val('');
+    $("#box #title").val('');
+    $("#box #date").val('');
+    $("#box #points").val('');
+    $("#box #memo").val('');
   }
 
   memoArr = [];
   let storageKey = 'memoObj';
 
   var saveMemo = function(ttl,date,points,memo){
-  let memoObj = {
-    ttl : ttl,
-    date : date,
-    points : points,
-    memo : memo
-  };
-  memoArr.push(memoObj);
-  saveStorage(storageKey,memoArr);
+    let memoObj = {
+      ttl : ttl,
+      date : date,
+      points : points,
+      memo : memo
+    };
+    memoArr.push(memoObj);
+    saveStorage(storageKey,memoArr);
   }
 
   let resetMemo = function(){
@@ -63,16 +62,16 @@ $(function(){
       points = memoObj.points;
       memo = memoObj.memo;
 
-    memoObj = {
-      ttl : ttl,
-      date : date,
-      points : points,
-      memo : memo
-    };
-    memoArr.push(memoObj);
-    saveStorage(storageKey,memoArr);
-    addMemo(ttl,date,points,memo);
-  }
+      memoObj = {
+        ttl : ttl,
+        date : date,
+        points : points,
+        memo : memo
+      };
+      memoArr.push(memoObj);
+      saveStorage(storageKey,memoArr);
+      addMemo(ttl,date,points,memo);
+    }
   };
 
   //ページ読込み時にメモ復帰
