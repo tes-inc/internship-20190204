@@ -1,32 +1,32 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="main.css">
-    <script
-  src="https://code.jquery.com/jquery-3.3.1.min.js"
-  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-  crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Watching Movies Diary</title>
+  <link rel="stylesheet" href="main.css">
+  <script
+src="https://code.jquery.com/jquery-3.3.1.min.js"
+integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+crossorigin="anonymous"></script>
 </head>
 <body>
-    <div id="main"> 
-        <div id="box">
-            <h1>Watching Movies Diary</h1>
-                <input  type="text" name="title" id="title" placeholder="title"><br>
-                <input type="date" name="" id="date"><br>
-                <input  type="text" name="points" id="points" placeholder="score"><br>
-                <textarea id="memo" placeholder="感想を入力してください。"></textarea><br>
-                <button id="btnAdd" type="button">保存</button>
-                <button id="btnReset" type="button">リセット</button>
-        </div>
+  <div id="main">
+  <div id="box">
+    <h1>Watching Movies Diary</h1>
+    <input type="date" name="" id="date"><br>
+    <input type="number" name="points" id="points" placeholder="score:0~100点" min="0" max="100" step="10"><br>
+    <textarea id="title" name="title" placeholder="title" cols="14" rows="3"></textarea><br>
+    <textarea id="memo" placeholder="感想を入力してください。"></textarea><br>
+    <button id="btnAdd" type="button">保存</button>
+    <button id="btnReset" type="button">リセット</button>
+  </div>
+  <div id="history">
 
-        <div id="history">
-        
-        </div>
-    </div>
-    <script src="index.js"></script>
+  </div>
+</div>
+
+  <script src="index.js"></script>
 </body>
 </html>

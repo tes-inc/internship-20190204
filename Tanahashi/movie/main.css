@@ -1,105 +1,170 @@
 html, body, #main {
-    height: 100%;
-    display: flex;
-    justify-content: center;
+  width: auto;
+  display: flex;
+  justify-content: center;
 }
 
 body{
-    background-image: url("cinemas.png");
-    background-size: cover;
+  background-image: url("cinemas.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
 }
 
 h1{
-    font-family:'Times New Roman', Times, serif;
-    color: #000;
-    font-size: 50px;
-    font-weight: bold;
-    text-shadow: 5px 5px 1px #999999;
+  font-family:'Times New Roman', Times, serif;
+  color: #000;
+  font-size: 50px;
+  font-weight: bold;
+  text-shadow: 5px 5px 1px #999999;
 }
 
 #btnAdd,#btnReset{
-   height: 34px;
-    width: 100px;
-    margin-top: 30px;
-    color: black;
-    background-color: rgba(90, 49, 11, 0.767);
-    font-weight: bold;
-    font-size: 13px;
-    text-align: center;
-    border-collapse: collapse;
-    display: inline-block;
-    padding: 0.5em 1em;
-    text-decoration: none;
-    border-radius: 3px;
+  height: 34px;
+  width: 100px;
+  margin-top: 30px;
+  color: black;
+  background-color: rgba(90, 49, 11, 0.767);
+  font-weight: bold;
+  font-size: 13px;
+  text-align: center;
+  border-collapse: collapse;
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  border-radius: 3px;
 }
 
 #btnAdd:active,#btnReset:active{
-    -webkit-transform: translateY(4px);
-    transform: translateY(4px);/*下に動く*/
-    border-bottom: none;/*線を消す*/
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);/*下に動く*/
+  border-bottom: none;/*線を消す*/
   }
 
-p{
-    display: inline;
-}
-
 template{
-    background-color: white;
-}
-.name{
-    margin-left: 150px;
+  background-color: white;
 }
 
-textarea{
-    width: 300px;
-    height: 150px;
-    font-size: 15px;
+#memo{
+  width: 300px;
+  height: 150px;
+  font-size: 15px;
 }
 
 input{
-    font-size: 18px;
-    margin-bottom: 10px;
+  font-size: 18px;
+  margin-bottom: 10px;
 }
 
-#date{
-    width: 150px;
+#box #date{
+  width: 180px;
 }
 
-#points{
-    width: 100px;
+#box #points{
+  width: 180px;
 }
+
 #title{
-    width: 250px;
+  width: 300px;
+  font-size: 15px;
 }
 
 #box{
-    margin-top: 105px;
-    height: 100%;
-    text-align: center;
-    padding-left: 50px;
-    width: 400px;
-    background-color: white;
+  margin-top: 105px;
+  height: 100%;
+  text-align: center;
+  width: 400px;
+  background: linear-gradient(rgba(255, 255, 255, 0.616),rgba(230, 241, 241, 0.616),rgba(190, 221, 221, 0.74));
 
 }
+
+p{
+  display: inline;
+}
+
 #history{
-    height: 200%;
-    margin-top: 105px;
-    padding-right: 50px;
-    display: block;
-    background-color: white;
+  height: 100%;
+  margin-top: 105px;
+  padding-right: 50px;
+  display: inline-block;
+  background: linear-gradient(rgba(255, 255, 255, 0.616),rgba(230, 241, 241, 0.616),rgba(190, 221, 221, 0.74));
 }
 #history #memo{
-    border: none;
-    margin-left: 15px;
-    font-weight: bold;
+  font-weight: bold;
+}
+
+#history #title{
+  font-size: 18px;
+  font-weight: bold;
+}
+
+#history #p{
+  margin-left: 138px;
 }
 #history input{
-    font-size: 18px;
-    width: 190px;
-    border: none;
-    font-weight: bold;
+  font-size: 18px;
+  width: 190px;
+  font-weight: bold;
 }
 
 *:focus {
-outline: none;
+  outline: none;
+}
+
+/*1200px以下*/
+@media screen and (max-width: 1200px){
+
+  #main{
+    width: auto;
+    display: flex;
+    align-items: center;
+  }
+
+  #history{
+    text-align: center;
+    margin-top: 125px;
+    padding: 0;
+    width: 400px;
+    background: linear-gradient(rgba(255, 255, 255, 0.616),rgba(230, 241, 241, 0.616),rgba(190, 221, 221, 0.74));
+  }
+
+  #box{
+    margin-top: 125px;
+  }
+  p{
+    display: block;
+    margin: 0;
+  }
+  #history #points,#history #memo,#history #p{
+    margin: 0;
+  }
+}
+
+/*768px以下*/
+@media screen and (max-width: 768px){
+
+  #main{
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #history{
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    width: 400px;
+    background: linear-gradient(rgba(190, 221, 221, 0.74),rgba(230, 241, 241, 0.616),rgba(255, 255, 255, 0.616));
+  }
+
+  #box{
+    margin-top: 30px;
+  }
+  p{
+    display: block;
+    margin: 0;
+  }
+  #history #points,#history #memo,#history #p{
+    margin: 0;
+  }
 }
