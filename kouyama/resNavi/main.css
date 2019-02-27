@@ -68,7 +68,11 @@ nav li {
   background-image: url('inaho.jpeg');
   background-size: cover;
 }
-.mist {
+.main_mist {
+  background: rgba(255, 255, 255, 0.5);
+  background-size: cover;
+}
+.title_mist {
   height: 200px;
   background: rgba(255, 255, 255, 0.5);
   background-size: cover;
