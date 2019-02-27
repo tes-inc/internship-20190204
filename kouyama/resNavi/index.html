@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
   <link rel="stylesheet" href="main.css">
+  <link href="https://fonts.googleapis.com/css?family=Kosugi+Maru|Noto+Serif+SC" rel="stylesheet">
   <script
   src="https://code.jquery.com/jquery-3.3.1.min.js"
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -14,38 +16,72 @@
   <title>resNavi</title>
 </head>
 <body>
-  <div id="main">
-    <h1>レストラン検索サイト(仮)</h1>
-    <form method="GET">
-      <span>店名</span>
-      <input id="searchName" name="name" type="text" placeholder="店名を入力してください">
-      <span>フリーワード検索</span>
-      <input id="freeWord" name="freeWord" type="text" placeholder="料理名、地名等">
-      <input id="search" name="submit" type="button" value="検索">
-      <input id="nearStore" name="nearStore" type="button" value="近くの店舗を検索">
-      <select id="range" name="range" required>
-        <option value="1">300m以内</option>
-        <option value="2" selected>500m以内</option>
-        <option value="3">1000m以内</option>
-        <option value="4">2000m以内</option>
-        <option value="5">3000m以内</option>
-    </select>
-    <div>
-      <input id="returnPage" type="button" value="returnPage">
-      <!-- <span id="pageNumber"></span> -->
-      <span id="pageNumbers"></span>
-      <input id="nextPage" type="button" value="nextPage">
-    </div>
-    <div>
-      <span id="totalHitCount"></span>
-      <span id="hit_per_page"></span>
-    </div>
+  <div class="header_in">
+    <header>
+      <a href="http://127.0.0.1:8080/resNavi/" class="header_logo">グールグルなび</a>
+      <nav>
+        <ul>
+          <li><a href="#" id="return_page">前のページ</a></li>
+          <li><a href="#" id="next_page">次のページ</a></li>
+          <li><a href="#page-bottom" id="header_button">いちばんした</a></li>
+        </ul>
+      </nav>
+    </header>
+  </div>
 
-    </form>
-    <br><br><hr>
-    <div id="loading" class="hide"></div>
-    <div id="searchResults"></div>
-
+  <div class="main mist">
+    <div class="title_catch">
+      <div class="mist">
+        <p id="title" class="title">グールグルなび</p>
+          <p id="catch" class="catch">〜 OK!ぐーるぐる 〜</p>
+      </div>
+    </div>
+    <div class="inf_form">
+      <ul class="information">
+        <div id="thc_result" class="thc_result">
+          <li>レストラン検索サイトです！</li>
+          <li>店名やフリーワードで検索ができます！</li>
+          <li>範囲を選ぶと近場のお店も探せますよ</li>
+        </div>
+      </ul>
+      <form method="GET">
+        <div class="input_text">
+          <span>
+            <input id="search_name" class="search_name" name="name" type="text" placeholder="店名を入力">
+          </span>
+          <span>
+            <input id="free_word" class="free_word" name="freeword" type="text" placeholder="フリーワード">
+          </span>
+          <span>
+            <select class="range" id="range" name="range">
+              <option value="0" selected>はんい</option>
+              <option value="1">300m以内</option>
+              <option value="2">500m以内</option>
+              <option value="3">1000m以内</option>
+              <option value="4">2000m以内</option>
+              <option value="5">3000m以内</option>
+            </select>
+          </span>
+        </div>
+        <div class="thc_space">
+          <a href="#" id="search" class="search">
+            <p id="again" class="animated pulse infinite again">
+              Let's<br>ぐるぐる!
+            </p>
+          </a>
+        </div>
+      </form>
+    </div>
+    <div id="search_results" class="search_results"></div>
+      <div id="page_button" class="page hide">
+        <a href="#" class="btn-circle-stitch return_page">◀︎</a>
+        <a href="#" class="page_numbers" id="page_numbers">ページ</a>
+        <a href="#" class="btn-circle-stitch next_page">▶︎</a>
+      </div>
+    </div>
+    <footer>
+      <a href="#">トップへ戻る</a>
+    </footer>
   </div>
   <script src="script.js"></script>
 </body>
