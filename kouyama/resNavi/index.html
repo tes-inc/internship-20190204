@@ -16,6 +16,7 @@
   <title>resNavi</title>
 </head>
 <body>
+<<<<<<< HEAD
   <div class="header_in">
     <header>
       <a href="http://127.0.0.1:8080/resNavi/" class="header_logo">グールグルなび</a>
@@ -35,6 +36,29 @@
         <p id="title" class="title">グールグルなび</p>
           <p id="catch" class="catch">〜 OK!ぐーるぐる 〜</p>
       </div>
+=======
+  <div id="main">
+    <h1>ぐーるぐるなび(仮)</h1>
+    <form method="GET">
+      <span>店名</span>
+      <input id="searchName" name="name" type="text" placeholder="店名を入力してください">
+      <span>フリーワード検索</span>
+      <input id="freeWord" name="freeWord" type="text" placeholder="料理名、地名等">
+      <input id="search" name="submit" type="button" value="検索">
+      <input id="nearStore" name="nearStore" type="button" value="近くの店舗を検索">
+      <select id="range" name="range" required>
+        <option value="1">300m以内</option>
+        <option value="2" selected>500m以内</option>
+        <option value="3">1000m以内</option>
+        <option value="4">2000m以内</option>
+        <option value="5">3000m以内</option>
+    </select>
+    <div>
+      <input id="returnPage" type="button" value="returnPage">
+      <!-- <span id="pageNumber"></span> -->
+      <span id="pageNumbers"></span>
+      <input id="nextPage" type="button" value="nextPage">
+>>>>>>> a295a003a0c82ea0d3a3217a0ecd1fb956953826
     </div>
     <div class="inf_form">
       <ul class="information">

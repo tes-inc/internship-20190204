@@ -95,10 +95,17 @@ function display(data) {
   $('#page_numbers').text(''); // 前回の検索結果のページナンバーを消す
   $('#page_button').removeClass('hide'); // ページ操作ボタンの表示
 
+<<<<<<< HEAD
   // 検索結果のページナンバーを表示
   for (let i = 1; i <= Math.ceil($thc/10) && i <= 100; i++) {
     $('#page_numbers').append(`
       <span id="page${i}" onClick="clickNumber(${i})" value="${i}">${i}</span>
+=======
+  // 検索結果のページの数字を表示
+  for (let i = 1; i <= Math.ceil($totalHitCount/10); i++) {
+    $('#pageNumbers').append(`
+      <input type="button" id="page${i}" onClick="clickNumber(${i})" value="${i}"></input>
+>>>>>>> a295a003a0c82ea0d3a3217a0ecd1fb956953826
     `)
     if(i === data.page_offset){ // 現在表示されているページの数字ならば
       $(`#page${i}`).addClass('strong'); // 強調
@@ -136,11 +143,16 @@ function display(data) {
   });
 }
 
+<<<<<<< HEAD
 // ページナンバーをクリックされた時の処理
+=======
+// ページ数をクリックされた時の処理
+>>>>>>> a295a003a0c82ea0d3a3217a0ecd1fb956953826
 function clickNumber(num) { // クリックされたボタンの数字を引数で受け取る
   page = num; // ページ数に格納
   data.offset_page = page // 検索開始ページをプロパティに追加
   ajax();
+<<<<<<< HEAD
 }
 
 // BOTTOMボタンが押された時の処理
@@ -152,3 +164,6 @@ $(function(){
       return false;
   });
 });
+=======
+}
+>>>>>>> a295a003a0c82ea0d3a3217a0ecd1fb956953826
