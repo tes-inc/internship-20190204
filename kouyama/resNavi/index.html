@@ -18,12 +18,12 @@
 <body>
   <div class="header_in">
     <header>
-      <a href="http://127.0.0.1:8080/resNavi/" class="header_logo">グールグルなび</a>
+      <a href="http://127.0.0.1:8080/kouyama/resNavi/" class="header_logo">グールグルなび</a>
       <nav>
-        <ul>
-          <li><a href="#" id="return_page">前のページ</a></li>
-          <li><a href="#" id="next_page">次のページ</a></li>
-          <li><a href="#page-bottom" id="header_button">いちばんした</a></li>
+        <ul class="page_button hide">
+          <li><a href="#" class="return_page">前のページ</a></li>
+          <li><a href="#" class="next_page">次のページ</a></li>
+          <li><a href="#page_bottom" id="page_bottom">いちばんした</a></li>
         </ul>
       </nav>
     </header>
@@ -33,14 +33,14 @@
     <div class="title_catch">
       <div class="title_mist">
         <p id="title" class="title">グールグルなび</p>
-          <p id="catch" class="catch">〜 OK!ぐーるぐる 〜</p>
+        <p id="catch" class="catch">〜 OK!ぐーるぐる 〜</p>
       </div>
     </div>
     <div class="inf_form">
       <ul class="information">
         <div id="thc_result" class="thc_result">
           <li>レストラン検索サイトです！</li>
-          <li>店名やフリーワードで検索ができます！</li>
+          <li>店名やフリーワードで検索ができます</li>
           <li>範囲を選ぶと近場のお店も探せますよ</li>
         </div>
       </ul>
@@ -73,14 +73,15 @@
       </form>
     </div>
     <div id="search_results" class="search_results"></div>
-      <div id="page_button" class="page hide">
-        <a href="#" class="btn-circle-stitch return_page">◀︎</a>
-        <a href="#" class="page_numbers" id="page_numbers">ページ</a>
-        <a href="#" class="btn-circle-stitch next_page">▶︎</a>
-      </div>
+    <div class="page_numbers_table">
+      <table class="page_numbers" id="page_numbers">
+        <tr>
+      </table>
     </div>
-    <footer>
+    <footer class="page_button hide">
+      <a href="#" class="return_page">◀︎ </a>
       <a href="#">トップへ戻る</a>
+      <a href="#" class="next_page"> ▶︎</a>
     </footer>
   </div>
   <script src="script.js"></script>

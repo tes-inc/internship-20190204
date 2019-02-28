@@ -1,10 +1,11 @@
 const gnaviUrl = `https://api.gnavi.co.jp/RestSearchAPI/v3/`; // ぐるなびAPIのURL
-const keyid = '9871f865dbe316cd7fb74d42daba6012'; // ぐるなびAPIのkeyid
+const keyid = 'e2d1f212bb0ddfdd774c23e22bedf31e'; // ぐるなびAPIのkeyid
 let data; // URLとして送信するオブジェクト
 let $search_name; // 店名検索に入力された文字列
 let $free_word; // フリーワード検索に入力された文字列
 let $thc; // 検索ヒット数totalhitcount
 let page = 1; // 現在のページ数を格納
+let maxPage; // 総検索結果ページ数
 
 
 // 検索ボタンが押された時
@@ -37,7 +38,7 @@ $('#search').on('click', function() {
 })
 
 // 次の10件を表示
-$('#next_page').on('click', function() {
+$('.next_page').on('click', function() {
   if (page >= Math.ceil($thc/10)) { // 表示したいページが検索結果のページ数より多くなる時
     return;
   }
@@ -46,7 +47,7 @@ $('#next_page').on('click', function() {
   ajax();
 })
 // 前の10件を表示
-$('#return_page').on('click', function() {
+$('.return_page').on('click', function() {
   if (page <= 1) {
     return;
   }
@@ -82,7 +83,7 @@ function ajax(){
   .fail(function(jqXHR, textStatus, errorThrown) { // ajaxの処理失敗時
     $('#search_results').text(''); // 前回の検索結果表示を初期化
     $('#page_numbers').text(''); // 前回の検索結果のページナンバーを消す
-    $('#page_button').addClass('hide'); // ページ操作ボタンの非表示
+    $('.page_button').addClass('hide'); // ページ操作ボタンの非表示
     $('#thc_result').text(errorThrown); // エラー内容を表示
   })
 }
@@ -93,19 +94,30 @@ function display(data) {
 
   $('#search_results').text(''); // 前回の検索結果表示を初期化
   $('#page_numbers').text(''); // 前回の検索結果のページナンバーを消す
-  $('#page_button').removeClass('hide'); // ページ操作ボタンの表示
+  $('.page_button').removeClass('hide'); // ページ操作ボタンの表示
 
   // 検索結果のページナンバーを表示
   for (let i = 1; i <= Math.ceil($thc/10) && i <= 100; i++) {
     $('#page_numbers').append(`
-      <span id="page${i}" onClick="clickNumber(${i})" value="${i}">${i}</span>
+      <td class="page_td">
+        <a id="page${i}" onClick="clickNumber(${i})" value="${i}">${i}</a>
+      </td>
     `)
-    if(i === data.page_offset){ // 現在表示されているページの数字ならば
+    if (i === data.page_offset) { // 現在表示されているページの数字ならば
       $(`#page${i}`).addClass('strong'); // 強調
     }
+    if (i%20 === 0) { // iが20の倍数の時改行
+      $('#page_numbers').append(`
+        </tr><tr>
+      `)
+    }
+    maxPage = i; // 総検索結果ページ数を格納
   }
   $('#again').html(`again<br>ぐるぐる?`);
-  $('#thc_result').html(`<p class="thc_result2 animated rotateIn">${$thc}軒Hit!</p>`);
+  $('#thc_result').html(`
+    <p class="thc_result2 animated rotateIn">${$thc}軒Hit!</p>
+    <p class="now_page">現在${data.page_offset}/${maxPage}ページです</p>
+  `);
 
   $(data.rest).each(function() { // dataのプロパティrestの要素一つ一つに対して繰り返し処理
     let img1; // PR画像1
@@ -116,19 +128,39 @@ function display(data) {
 
     // 検索結果を画面に表示
     // 名前とカテゴリーを表示
+    $('#search_results').append(`<hr>`);
     $('#search_results').append(`
       <div class='store'>
-        <hr>
-        <p class='store_title'>
-          <span class='store_name'><a href='${this.url}'>${this.name}</a></span>
-          <span class='store_category'>${this.category}</span>
-        </p>
-        <div>
-          <img class='img' src="${img1}" alt="img1" height='240' width='240'>
-          <img class='img' src="${img2}" alt="img2" height='240' width='240'>
+        <div class='store_top'>
+          <div>
+            <a href='${this.url}' class='store_name'>${this.name}</a>
+            <p class='store_category'>〜${this.category}〜</p>
+          </div>
         </div>
-        <div class='store_inf'>
-          <p class='store_address'>${this.address}</p>
+        <div class='store_middle'>
+          <div class='img'>
+            <img src='${img1}' alt='img1' height='240' width='240'>
+            <img src='${img2}' alt='img2' height='240' width='240'>
+          </div>
+          <div>
+            <table class='store_table'>
+              <tr>
+                <td class='store_inf1'>住所</td><td class='store_inf2'>${this.address}</td>
+              </tr>
+              <tr>
+                <td class='store_inf1'>電話番号</td><td class='store_inf2'>${this.tel}</td>
+              </tr>
+              <tr>
+                <td class='store_inf1'>駐車場</td><td class='store_inf2'>${this.parking}</td>
+              </tr>
+                <td class='store_inf1'>wifi</td><td class='store_inf2'>${this.wifi}</td>
+              <tr>
+                <td class='store_inf1'>電子マネー</td><td class='store_inf2'>${this.e_money}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class='store_bottom'>
           <p class='pr_long'>${this.pr.pr_long}</p>
         </div>
       </div>
@@ -143,9 +175,9 @@ function clickNumber(num) { // クリックされたボタンの数字を引数�
   ajax();
 }
 
-// BOTTOMボタンが押された時の処理
+// 「いちばんした」ボタンが押された時の処理
 $(function(){
-  $("#page_bottom").click(function(){
+  $('#page_bottom').click(function(){
       $('html, body').animate({
         scrollTop: $(document).height()
       },1500);
