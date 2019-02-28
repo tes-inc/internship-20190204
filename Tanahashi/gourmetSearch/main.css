@@ -1,0 +1,264 @@
+body{
+  background: url('food.png') no-repeat center;
+  background-size: cover;
+  height: 100vh;
+  position: relative;
+}
+
+strong{
+  font-family: 'Lobster', cursive;
+  color: rgb(224, 224, 224);
+  font-size: 160px;
+  font-weight: bold;
+  text-shadow: 5px 5px 2px #252525;
+  margin-bottom: 0;
+}
+
+#btnSearch,#btnGpsSearch{
+  height: 34px;
+  width: 100px;
+  margin-top: 30px;
+  color: black;
+  background-color: rgb(224, 224, 224);
+  font-weight: bold;
+  font-size: 15px;
+  text-align: center;
+  border-collapse: collapse;
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  border-radius: 3px;
+}
+
+#btnSearch:active,#btnGpsSearch:active{
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);/*下に動く*/
+  border-bottom: none;/*線を消す*/
+  }
+
+#box{
+  height: 850px;
+  width: 100%;
+  margin-top: 250px;
+  text-align: center;
+  display: block;
+  margin-right: 15px;
+}
+
+a{
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 20px;
+  color: black;
+}
+
+input{
+  height: 40px;
+  font-size: 18px;
+}
+
+#total{
+  font-weight: bold;
+  font-size: 30px;
+  color: white;
+  text-shadow: 2px 2px 0 black;
+  margin: 0px;
+}
+#offsetPage{
+  text-align: center;
+}
+#kekka #back{
+  display: flex;
+  position: fixed;
+  top:450px;
+  left:0;
+}
+
+#kekka #next{
+  display: flex;
+  position: fixed;
+  top:450px;
+  right:0;
+}
+
+#result{
+  background: url('linen.gif');
+  background-size: auto;
+}
+
+table{
+  display: block;
+}
+
+tr{
+  display: inline;
+}
+
+td{
+  width: 400px;
+  height: 540px;
+  border: rgb(122, 125, 126);
+  box-shadow: 2px 2px 9px #2929298c;
+  border-radius :30px;
+  text-align: center;
+  display: inline-block;
+  margin-left: 55px;
+  margin-bottom: 20px;
+  background-color: white;
+}
+
+a:hover{
+  color: rgba(34, 185, 147, 0.952);
+}
+
+img{
+  font-size: 40px;
+}
+
+.cp_imghover {
+	overflow: hidden;
+	width: 240px;
+	height: 240px;
+	margin: 20px auto;
+	cursor: pointer;
+}
+/*grayscale*/
+.cp_bw {
+	-webkit-transition: all 1s ease;
+	transition: all 1s ease;
+}
+.cp_bw:hover {
+	-webkit-filter: grayscale(100%);
+	filter: grayscale(100%);
+}
+
+.button::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  content: '';
+  background: #333;
+  transform-origin: left bottom;
+  transform: scale(1, 0);
+  transition: transform .3s;
+}
+.button:hover::before {
+  transform-origin: left top;
+  transform: scale(1, 1);
+}
+
+#pr{
+  font-weight: bold;
+  color: rgb(45, 70, 70);
+}
+
+#place{
+  font-size: 13px;
+}
+
+#loading {
+  display: table;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(235, 255, 248, 0.973);
+  opacity: 0.8;
+}
+
+#loading .loadingMsg {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  padding-top: 140px;
+  background: url("loading\ .gif") center no-repeat;
+}
+
+#page_top{
+  width: 60px;
+  height: 60px;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  background: #030303;
+}
+#page_top a{
+  position: relative;
+  display: block;
+  width: 60px;
+  height: 45px;
+  text-decoration: none;
+}
+#page_top a::before{
+  font-family: FontAwesome;
+  content: '\f0d8';
+  font-size: 40px;
+  color: #fff;
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+  text-align: center;
+}
+
+footer{
+  text-align: right;
+  padding-right: 60px;
+  background: url('linen.gif');
+  background-size: auto;
+}
+
+#back,#next{
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  background-color: rgb(248, 245, 245);
+  box-shadow: 2px 2px 9px #2929298c;
+}
+
+.fa{
+  color: #fff;
+  text-shadow: 0 0 3px black;
+  padding-left: 8px;
+}
+
+.fa:hover,#back:hover,#next:hover{
+  background-color: rgb(45, 70, 70);;
+}
+
+*:focus {
+  outline: none;
+}
+/*992px以下*/
+@media screen and (max-width:992px){
+  strong{
+    font-size: 120px;
+  }
+}
+/*768px以下*/
+@media screen and (max-width:768px){
+  strong{
+    font-size: 90px;
+  }
+}
+/*576px以下*/
+@media screen and (max-width:576px){
+  strong{
+    font-size: 80px;
+  }
+
+  #shopName{
+    margin-left: 30px;
+  }
+  #freeWord{
+    margin-right: 30px;
+  }
+}
