@@ -133,23 +133,23 @@ a:hover{
   color: rgba(34, 185, 147, 0.952);
 }
 
-img{
+#noImg a,#noImg{
   font-size: 40px;
+  height: 230px;
+  margin: 0;
 }
 
-.cp_imghover {
+#noImg,.cp_imghover {
 	overflow: hidden;
-	width: 240px;
-	height: 240px;
 	margin: 20px auto;
 	cursor: pointer;
 }
 /*grayscale*/
-.cp_bw {
+.cp_bw,#noImg {
 	-webkit-transition: all 1s ease;
 	transition: all 1s ease;
 }
-.cp_bw:hover {
+.cp_bw:hover,#noImg:hover {
 	-webkit-filter: grayscale(100%);
 	filter: grayscale(100%);
 }

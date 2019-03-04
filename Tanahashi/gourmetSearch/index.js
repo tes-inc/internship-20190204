@@ -87,7 +87,7 @@ $(function(){
 
     //ajaxの処理を格納
     jqxhr = $.ajax({
-      url: `https://api.gnavi.co.jp/RestSearchAPI/v3/?keyid=e2d1f212bb0ddfdd774c23e22bedf31e&name=${param}&freeword=${param2}&freeword_condition=2&offset_page=${page}`,
+      url: `https://api.gnavi.co.jp/RestSearchAPI/v3/?keyid=9871f865dbe316cd7fb74d42daba6012&name=${param}&freeword=${param2}&freeword_condition=2&offset_page=${page}`,
       dataType: 'json',
       date:{
         name: name,
@@ -100,13 +100,33 @@ $(function(){
     }).done(function(date){
       let dateArray = date.rest;
       $('#offsetPage').empty();
-      $('#offsetPage').append(`<p id="total">Find:全${date.total_hit_count}件-${page}/${Math.round(date.total_hit_count/10)}page-</p>`);
+      $('#offsetPage').append(`<p id="total">Find:全${date.total_hit_count}件-${page}/${Math.ceil(date.total_hit_count/10)}page-</p>`);
       $('table').empty();
-      $.each(dateArray,function(i){
-        $('table').append(`<tr><td class="animated slideInRight"><p id="title"><a href="${dateArray[i].url}" target="blank">◉${dateArray[i].name}</p><hr>
-        <p class="cp_imghover cp_bw"><img src="${dateArray[i].image_url.shop_image1}" alt="No Image!!"></a></p>
-        <p id="place">${dateArray[i].address}<br>${dateArray[i].tel}</p>
-        <p id="pr">${dateArray[i].pr.pr_short}</p></td></tr>`);
+      $.each(dateArray, function (i) {
+        // 画像がある場合とない場合で条件分岐
+        const img = dateArray[i].image_url.shop_image1
+          ? `<img src="${dateArray[i].image_url.shop_image1}" alt="Shop Image">`
+          : "<div><p id='noImg'>No Image!!</p><div>";
+
+        $('table').append(`
+          <tr>
+            <td class="animated slideInRight">
+              <p id="title">
+                <a href="${dateArray[i].url}" target="blank">◉${dateArray[i].name}</a>
+              </p>
+              <hr>
+              <p class="cp_imghover cp_bw">
+                <a href="${dateArray[i].url}" target="blank">${img}</a>
+              </p>
+              <p id="place">
+                ${dateArray[i].address}<br>${dateArray[i].tel}
+              </p>
+              <p id="pr">
+                ${dateArray[i].pr.pr_short}
+              </p>
+            </td>
+          </tr>
+        `);
       });
     }).fail(function(XMLHttpRequest, textStatus, errorThrown) {
       alert('Nothing Hit!');
@@ -212,7 +232,7 @@ $(function(){
 
       //ajaxの処理を格納
       jqxhr = $.ajax({
-        url: `https://api.gnavi.co.jp/RestSearchAPI/v3/?keyid=e2d1f212bb0ddfdd774c23e22bedf31e&name=${param}&freeword=${param2}&freeword_condition=2&latitude=${ido}&longitude=${keido}&range=5&offset_page=${page}`,
+        url: `https://api.gnavi.co.jp/RestSearchAPI/v3/?keyid=9871f865dbe316cd7fb74d42daba6012&name=${param}&freeword=${param2}&freeword_condition=2&latitude=${ido}&longitude=${keido}&range=5&offset_page=${page}`,
         dataType: 'json',
         date:{
           name: name,
@@ -225,13 +245,33 @@ $(function(){
       }).done(function(date){
         let dateArray = date.rest;
         $('#offsetPage').empty();
-        $('#offsetPage').append(`<p id="total">Find:全${date.total_hit_count}件-${page}/${Math.round(date.total_hit_count/10)}page-</p>`);
+        $('#offsetPage').append(`<p id="total">Find:全${date.total_hit_count}件-${page}/${Math.ceil(date.total_hit_count/10)}page-</p>`);
         $('table').empty();
-        $.each(dateArray,function(i){
-          $('table').append(`<tr><td class="animated slideInRight"><p id="title"><a href="${dateArray[i].url}" target="blank">◉${dateArray[i].name}</p><hr>
-          <p class="cp_imghover cp_bw"><img src="${dateArray[i].image_url.shop_image1}" alt="No Image!!"></a></p>
-          <p id="place">${dateArray[i].address}<br>${dateArray[i].tel}</p>
-          <p id="pr">${dateArray[i].pr.pr_short}</p></td></tr>`);
+        $.each(dateArray, function (i) {
+          // 画像がある場合とない場合で条件分岐
+          const img = dateArray[i].image_url.shop_image1
+            ? `<img src="${dateArray[i].image_url.shop_image1}" alt="Shop Image">`
+            : "<div><p id='noImg'>No Image!!</p><div>";
+
+          $('table').append(`
+            <tr>
+              <td class="animated slideInRight">
+                <p id="title">
+                  <a href="${dateArray[i].url}" target="blank">◉${dateArray[i].name}</a>
+                </p>
+                <hr>
+                <p class="cp_imghover cp_bw">
+                  <a href="${dateArray[i].url}" target="blank">${img}</a>
+                </p>
+                <p id="place">
+                  ${dateArray[i].address}<br>${dateArray[i].tel}
+                </p>
+                <p id="pr">
+                  ${dateArray[i].pr.pr_short}
+                </p>
+              </td>
+            </tr>
+          `);
         });
         }).fail(function(XMLHttpRequest, textStatus, errorThrown) {
           alert('Nothing Hit!');
