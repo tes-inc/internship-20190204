@@ -212,9 +212,6 @@ input[type="text"] {
 }
 
 /* 検索Hit件数表示 */
-.thc_result {
-
-}
 .thc_result2 {
   margin: 0;
   padding: 7px;
@@ -237,44 +234,45 @@ input[type="text"] {
   background-color: rgba(0, 204, 255, 0.5);
   border: inset 3px #FFF;
 }
-.thc_space p {
+.thc_space a {
+  padding-top: 43px;
+  height: 100%;
   text-shadow: 1px 1px 1px white;
   color: rgb(70, 88, 255);
 }
-.thc_space p:hover {
+.thc_space a:hover {
   color: rgb(4, 0, 255);
 }
-.again {
+.search {
   display: inline-block;
   height: 100px;
   width: 150px;
-  margin-top: 43px;
   font-weight: bold;
   font-size: 30px;
   color: black;
 }
 
 /* ページ操作 */
-.page_numbers_table {
-  text-align: center;
-}
 .page_numbers {
+  text-align: center;
   margin-left: auto;
   margin-right: auto;
-}
-.page_numbers td {
   padding: 3px;
-  color: white;
-  background: #2a6eff81;
-  border: inset 1px;
-  border-color: #2a6eff;
-  border-radius: 100%;
-  text-align: center;
-
 }
-.page_numbers td:hover {
-  background-color: #ffff66;
-  border: outset 1px;
+.page_numbers button {
+  display: inline-block;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: bold;
+  color: #67c5ff;
+  border: solid 2px #67c5ff;
+  border-radius: 3px;
+  transition: .4s;
+}
+.page_numbers button:hover {
+  background: #67c5ff;
+  color: white;
 }
 
 /* footer */

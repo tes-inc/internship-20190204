@@ -4,15 +4,16 @@ let data; // URLとして送信するオブジェクト
 let $search_name; // 店名検索に入力された文字列
 let $free_word; // フリーワード検索に入力された文字列
 let $thc; // 検索ヒット数totalhitcount
-let page = 1; // 現在のページ数を格納
-let maxPage; // 総検索結果ページ数
+let $thcPage; // 総検索ヒットページ数
+let page = 1; // 10ページごとの移動用
 
 
-// 検索ボタンが押された時
+// 検索ボタンをクリックされた時
 $('#search').on('click', function() {
   $('#thc_result').html('<img src="loading.gif">'); // ローディング画像を表示
-
+  page = 1; // ページ番号初期化
   data = { keyid : keyid }; // 前回の検索dataを初期化
+
   $search_name = $('#search_name').val(); // 「店名」検索フォームに入力された文字列
   $free_word = $('#free_word').val(); // 「フリーワード」検索フォームに入力された文字列
   let $range = $('#range').val(); // 検索する範囲を指定する変数
@@ -42,7 +43,7 @@ $('.next_page').on('click', function() {
   if (page >= Math.ceil($thc/10)) { // 表示したいページが検索結果のページ数より多くなる時
     return;
   }
-  page++; // 次のページへ
+  page++;
   data.offset_page = page; // 検索開始ページをプロパティに追加
   ajax();
 })
@@ -82,7 +83,7 @@ function ajax(){
   })
   .fail(function(jqXHR, textStatus, errorThrown) { // ajaxの処理失敗時
     $('#search_results').text(''); // 前回の検索結果表示を初期化
-    $('#page_numbers').text(''); // 前回の検索結果のページナンバーを消す
+    $('#page_numbers').text(''); // 前回の検索結果のページナンバーを初期化
     $('.page_button').addClass('hide'); // ページ操作ボタンの非表示
     $('#thc_result').text(errorThrown); // エラー内容を表示
   })
@@ -90,46 +91,34 @@ function ajax(){
 
 // 受け取ったデータを表示する関数
 function display(data) {
-  $thc = data.total_hit_count; // 検索ヒット数を格納
+  $thc = data.total_hit_count; // 検索ヒット数
+  $thcPage = Math.ceil($thc/10); // 検索ヒットページ数
+  // 検索ヒットページが100ページを超える場合
+  $thcPage > 100 ? $thcPage = 100 : false;
 
   $('#search_results').text(''); // 前回の検索結果表示を初期化
-  $('#page_numbers').text(''); // 前回の検索結果のページナンバーを消す
+  $('#page_numbers').text(''); // 前回の検索結果のページナンバーを初期化
   $('.page_button').removeClass('hide'); // ページ操作ボタンの表示
 
-  // 検索結果のページナンバーを表示
-  for (let i = 1; i <= Math.ceil($thc/10) && i <= 100; i++) {
-    $('#page_numbers').append(`
-      <td class="page_td">
-        <a id="page${i}" onClick="clickNumber(${i})" value="${i}">${i}</a>
-      </td>
-    `)
-    if (i === data.page_offset) { // 現在表示されているページの数字ならば
-      $(`#page${i}`).addClass('strong'); // 強調
-    }
-    if (i%20 === 0) { // iが20の倍数の時改行
-      $('#page_numbers').append(`
-        </tr><tr>
-      `)
-    }
-    maxPage = i; // 総検索結果ページ数を格納
-  }
-  $('#again').html(`again<br>ぐるぐる?`);
+  pageNumbers(data); // 画面下部にページ番号を出力
+
+  $('#search').html(`again<br>ぐるぐる?`); // もう一度検索用のボタンを表示
   $('#thc_result').html(`
     <p class="thc_result2 animated rotateIn">${$thc}軒Hit!</p>
-    <p class="now_page">現在${data.page_offset}/${maxPage}ページです</p>
+    <p class="now_page">現在${data.page_offset}/${$thcPage}ページです</p>
   `);
 
+  // 検索結果を1店舗毎に10店舗分画面に表示
   $(data.rest).each(function() { // dataのプロパティrestの要素一つ一つに対して繰り返し処理
     let img1; // PR画像1
     let img2; // PR画像2
     // 画像がなければ別の画像に差し替え
-    this.image_url.shop_image1 ? img1 = this.image_url.shop_image1 : img1 = 'LOK_gohantomisoshiru_TP_V 3.jpeg';
-    this.image_url.shop_image2 ? img2 = this.image_url.shop_image2 : img2 = 'LOK_gohantomisoshiru_TP_V 3.jpeg';
+    this.image_url.shop_image1 ? img1 = this.image_url.shop_image1 : img1 = 'kanban_jyunbi.png';
+    this.image_url.shop_image2 ? img2 = this.image_url.shop_image2 : img2 = 'kanban_jyunbi.png';
 
-    // 検索結果を画面に表示
-    // 名前とカテゴリーを表示
-    $('#search_results').append(`<hr>`);
+    // htmlで出力
     $('#search_results').append(`
+      <hr>
       <div class='store'>
         <div class='store_top'>
           <div>
@@ -151,9 +140,9 @@ function display(data) {
                 <td class='store_inf1'>電話番号</td><td class='store_inf2'>${this.tel}</td>
               </tr>
               <tr>
-                <td class='store_inf1'>駐車場</td><td class='store_inf2'>${this.parking}</td>
+                <td class='store_inf1'>営業時間</td><td class='store_inf2'>${this.opentime}</td>
               </tr>
-                <td class='store_inf1'>wifi</td><td class='store_inf2'>${this.wifi}</td>
+                <td class='store_inf1'>休業日</td><td class='store_inf2'>${this.holiday}</td>
               <tr>
                 <td class='store_inf1'>電子マネー</td><td class='store_inf2'>${this.e_money}</td>
               </tr>
@@ -168,19 +157,48 @@ function display(data) {
   });
 }
 
+// 検索結果のページナンバーを表示
+function pageNumbers(data) {
+  if (page > 10) {
+    $('#page_numbers').append(`
+      <button type="button" onClick='returnPage(${page})'>◀</button>
+    `)
+  }
+  for (let i = page; i <= $thcPage && i < page + 10; i++) {
+    $('#page_numbers').append(`
+        <button type="button" id="page${i}" onClick="clickNumber(${i})" value="${i}">${i}</button>
+    `)
+    if (i === data.page_offset) { // 現在表示されているページの数字ならば
+      $(`#page${i}`).addClass('strong'); // 強調
+    }
+  }
+  if ($thcPage > 10 && page + 10 < $thcPage && page < 90) {
+    $('#page_numbers').append(`
+      <button type="button" onClick='nextPage(${page})'>▶</button>
+    `)
+  }
+}
+// 10ページ戻るボタンをクリックされたとき
+function returnPage(num) {
+  page = num - 10;
+  clickNumber(page);
+}
+// 10ページ進むボタンをクリックされたとき
+function nextPage(num) {
+  page = num + 10;
+  clickNumber(page);
+}
+
 // ページナンバーをクリックされた時の処理
 function clickNumber(num) { // クリックされたボタンの数字を引数で受け取る
-  page = num; // ページ数に格納
-  data.offset_page = page // 検索開始ページをプロパティに追加
+  data.offset_page = num; // 検索開始ページをプロパティに追加
   ajax();
 }
 
-// 「いちばんした」ボタンが押された時の処理
-$(function(){
-  $('#page_bottom').click(function(){
-      $('html, body').animate({
-        scrollTop: $(document).height()
-      },1500);
-      return false;
-  });
+// 「いちばんした」ボタンをクリックされた時の処理
+$('#page_bottom').click(function(){
+    $('html, body').animate({
+      scrollTop: $(document).height()
+    },1500);
+    return false;
 });
