@@ -1,5 +1,6 @@
 $(function(){
 
+  //ローディング画像表示の関数
   function dispLoading(msg){
     // 引数なし（メッセージなし）を許容
     if( msg == undefined ){
@@ -21,29 +22,50 @@ $(function(){
   }
 
 
-  //デフォルトではトップへ戻るボタンを隠す
+  //デフォルトではトップへ戻るボタン、ページ送りボタン、footerを隠す
   $('#page_top').hide();
-  $('#kekka').hide();
+  $('#next').hide();
+  $('#back').hide();
+  $('#moreNext').hide();
+  $('#moreBack').hide();
   $('footer').hide();
   //スクロールをしたとき
   $(window).scroll(function(){
-  //ページのトップから850pxすぎた時
-    if($(this).scrollTop() > 850){
-  //トップへ戻るボタンを表示
+  //ページのトップから750pxすぎた時
+    if($(this).scrollTop() > 750){
+  //トップへ戻るボタン、ページ送りボタン、footerを表示
     $('#page_top').fadeIn();
-    $('#kekka').fadeIn();
+    $('#back').fadeIn();
+    $('#next').fadeIn();
     $('footer').fadeIn();
     } else {
       $('#page_top').fadeOut();
-      $('#kekka').fadeOut();
+      $('#back').fadeOut();
+      $('#next').fadeOut();
+      $('#moreNext').hide();
+      $('#moreBack').hide();
       $('footer').fadeOut();
     }
   });
 
+  //前へボタンにカーソルを合わせた時の処理
+  $('#back').hover(function(){
+    $('#moreBack').show();
+  });
+
+  //次へボタンにカーソルを合わせた時の処理
+  $('#next').hover(function(){
+    $('#moreNext').show();
+  });
+
+  //ページの変数
   let page = 1;
+  //ajaxの処理を格納するための変数
   let jqxhr = null;
+  //検索か周辺検索かを切り分けるための変数
   let num ;
 
+  //検索ボタン押下時の処理
   function addItem() {
     if (jqxhr) {
       // 通信を中断する
@@ -51,16 +73,21 @@ $(function(){
       jqxhr.abort();
     }
 
+    //店名検索フォームの入力値を格納する為の変数
     let param =  $('#shopName').val();
+    //キーワード検索フォームの入力値を格納する為の変数
     let param2 = $('#freeWord').val();
+    //住所と店名をUTF-8でURLエンコードし、格納する為の変数
     let address = encodeURI('address');
     let name = encodeURI('name');
     num = 1;
 
+    //Loadhing画像表示
     dispLoading("処理中...");
 
+    //ajaxの処理を格納
     jqxhr = $.ajax({
-      url: 'https://api.gnavi.co.jp/RestSearchAPI/v3/?keyid=e2d1f212bb0ddfdd774c23e22bedf31e&name='+param+'&freeword='+param2+'&freeword_condition=2&offset_page='+page,
+      url: `https://api.gnavi.co.jp/RestSearchAPI/v3/?keyid=e2d1f212bb0ddfdd774c23e22bedf31e&name=${param}&freeword=${param2}&freeword_condition=2&offset_page=${page}`,
       dataType: 'json',
       date:{
         name: name,
@@ -73,10 +100,13 @@ $(function(){
     }).done(function(date){
       let dateArray = date.rest;
       $('#offsetPage').empty();
-      $('#offsetPage').append('<p id="total">Find:全'+date.total_hit_count+'件-'+page+'page-</p>');
+      $('#offsetPage').append(`<p id="total">Find:全${date.total_hit_count}件-${page}/${Math.round(date.total_hit_count/10)}page-</p>`);
       $('table').empty();
       $.each(dateArray,function(i){
-        $('table').append('<tr><td class="animated slideInRight"><p id="title"><a href="'+dateArray[i].url+'" target="blank">◉'+dateArray[i].name+'</p><hr><p class="cp_imghover cp_bw"><img src="'+dateArray[i].image_url.shop_image1+'" alt="No Image!!"></a></p>'+'<p id="place">'+dateArray[i].address+'<br>'+dateArray[i].tel+'</p><p id="pr">'+dateArray[i].pr.pr_short+'</p></td></tr>');
+        $('table').append(`<tr><td class="animated slideInRight"><p id="title"><a href="${dateArray[i].url}" target="blank">◉${dateArray[i].name}</p><hr>
+        <p class="cp_imghover cp_bw"><img src="${dateArray[i].image_url.shop_image1}" alt="No Image!!"></a></p>
+        <p id="place">${dateArray[i].address}<br>${dateArray[i].tel}</p>
+        <p id="pr">${dateArray[i].pr.pr_short}</p></td></tr>`);
       });
     }).fail(function(XMLHttpRequest, textStatus, errorThrown) {
       alert('Nothing Hit!');
@@ -91,11 +121,13 @@ $(function(){
 
   //Findボタン押下時
   $('#btnSearch').on('click',function(){
+    page = 1;
     addItem();
     });//Findボタンの処理終了
 
     //Nearボタン押下時
   $('#btnGpsSearch').on('click',function(){
+    page = 1;
     addItem2();
   });//Nearボタンの処理終了
 
@@ -109,8 +141,22 @@ $(function(){
           addItem2();
         }
       };
-
     });
+
+    //5ページ次へボタン押下時
+    $('#moreNext').on('click',function(){
+      if(page === 1){
+        page = 5;
+      }else{
+        page += 5;
+      }
+      if(num == 1){
+        addItem();
+      }else if(num == 2){
+        addItem2();
+      }
+    });
+
       //前へボタン押下時
       $('#back').on('click',function(){
         if(page > 0){
@@ -123,6 +169,21 @@ $(function(){
         };
       });
 
+      //5ページ前へボタン押下時
+      $('#moreBack').on('click',function(){
+        if(page <= 5){
+          page = 1;
+        }else{
+          page -= 5;
+        }
+        if(num == 1){
+          addItem();
+        }else if(num == 2){
+          addItem2();
+        }
+      });
+
+  //周辺検索ボタン押下時の処理
   function addItem2() {
     if (jqxhr) {
       // 通信を中断する
@@ -130,20 +191,28 @@ $(function(){
       jqxhr.abort();
     }
 
+  //店名検索フォームの入力値を格納する為の変数
   let param =  $('#shopName').val();
+  //キーワード検索フォームの入力値を格納する為の変数
   let param2 = $('#freeWord').val();
+  //住所と店名をUTF-8でURLエンコードし、格納する為の変数
   let address = encodeURI('address');
   let name = encodeURI('name');
   num = 2;
 
+  //Loadhing画像表示
   dispLoading("処理中...");
 
+    //現在値を取得する為の関数
     navigator.geolocation.getCurrentPosition(function(potision){
+      //緯度取得
       let ido = potision.coords.latitude;
+      //経度取得
       let keido = potision.coords.longitude;
 
+      //ajaxの処理を格納
       jqxhr = $.ajax({
-        url: 'https://api.gnavi.co.jp/RestSearchAPI/v3/?keyid=e2d1f212bb0ddfdd774c23e22bedf31e&name='+param+'&freeword='+param2+'&freeword_condition=2&latitude='+ido+'&longitude='+keido+'&range=5&offset_page='+page,
+        url: `https://api.gnavi.co.jp/RestSearchAPI/v3/?keyid=e2d1f212bb0ddfdd774c23e22bedf31e&name=${param}&freeword=${param2}&freeword_condition=2&latitude=${ido}&longitude=${keido}&range=5&offset_page=${page}`,
         dataType: 'json',
         date:{
           name: name,
@@ -156,10 +225,13 @@ $(function(){
       }).done(function(date){
         let dateArray = date.rest;
         $('#offsetPage').empty();
-        $('#offsetPage').append('<p id="total">Find(In 3000m):全'+date.total_hit_count+'件-'+page+'page-</p>');
+        $('#offsetPage').append(`<p id="total">Find:全${date.total_hit_count}件-${page}/${Math.round(date.total_hit_count/10)}page-</p>`);
         $('table').empty();
         $.each(dateArray,function(i){
-          $('table').append('<tr><td class="animated slideInRight"><p id="title"><a href="'+dateArray[i].url+'" target="blank">◉'+dateArray[i].name+'</p><hr><p class="cp_imghover cp_bw"><img src="'+dateArray[i].image_url.shop_image1+'" alt="No Image!!"></a></p>'+'<p id="place">'+dateArray[i].address+'<br>'+dateArray[i].tel+'</p><p id="pr">'+dateArray[i].pr.pr_short+'</p></td></tr>');
+          $('table').append(`<tr><td class="animated slideInRight"><p id="title"><a href="${dateArray[i].url}" target="blank">◉${dateArray[i].name}</p><hr>
+          <p class="cp_imghover cp_bw"><img src="${dateArray[i].image_url.shop_image1}" alt="No Image!!"></a></p>
+          <p id="place">${dateArray[i].address}<br>${dateArray[i].tel}</p>
+          <p id="pr">${dateArray[i].pr.pr_short}</p></td></tr>`);
         });
         }).fail(function(XMLHttpRequest, textStatus, errorThrown) {
           alert('Nothing Hit!');
