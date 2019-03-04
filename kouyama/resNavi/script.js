@@ -1,5 +1,5 @@
 const gnaviUrl = `https://api.gnavi.co.jp/RestSearchAPI/v3/`; // ぐるなびAPIのURL
-const keyid = 'e2d1f212bb0ddfdd774c23e22bedf31e'; // ぐるなびAPIのkeyid
+const keyid = '9871f865dbe316cd7fb74d42daba6012'; // ぐるなびAPIのkeyid
 let data; // URLとして送信するオブジェクト
 let $search_name; // 店名検索に入力された文字列
 let $free_word; // フリーワード検索に入力された文字列
@@ -12,14 +12,15 @@ let page = 1; // 10ページごとの移動用
 $('#search').on('click', function() {
   $('#thc_result').html('<img src="loading.gif">'); // ローディング画像を表示
   page = 1; // ページ番号初期化
-  data = { keyid : keyid }; // 前回の検索dataを初期化
+  data = {keyid}; // 前回の検索dataを初期化
 
   $search_name = $('#search_name').val(); // 「店名」検索フォームに入力された文字列
   $free_word = $('#free_word').val(); // 「フリーワード」検索フォームに入力された文字列
   let $range = $('#range').val(); // 検索する範囲を指定する変数
 
-  if (!$search_name && !$free_word && !$range) { // 店名・フリーワード・範囲どれも入力されていない場合
+  if (!$search_name && !$free_word && $range === '0') { // 店名・フリーワード・範囲どれも入力されていない場合
     alert('検索ワードを入力してください');
+    $('#thc_result').text('検索ワードを入力してください');
     return;
   }
   wordInput(); // 入力されたデータをdataに格納
