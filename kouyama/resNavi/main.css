@@ -1,0 +1,309 @@
+html {
+  margin: 0px;
+  padding: 0px;
+  height: 100%;
+  width: 100%;
+  background-image: url("LOK_gohantomisoshiru_TP_V 3.jpeg");
+  background-attachment: fixed;
+  background-size: cover;
+}
+body {
+  margin: 0px;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.main {
+  font-family: 'Kosugi Maru', sans-serif;
+  flex: 1;
+}
+a {
+  text-decoration: none;
+}
+.hide {
+  display: none;
+}
+.strong {
+  color: orangered;
+  font-weight: bold;
+  background: linear-gradient(transparent 60%, #ffff66 60%);
+}
+
+/* header */
+header {
+  left: 0px;
+  width: 100%;
+  height: 25px;
+  position:fixed;
+  list-style: none;
+  background-color: #66d892;
+  overflow: hidden;
+}
+header a {
+  text-decoration:none;
+  color:white;
+  font-weight: bold;
+}
+header a:hover {
+  color: #668ad8;
+}
+.header_logo {
+  font-size: 20px;
+  padding-left: 10px;
+  float: left;
+}
+nav ul {
+  text-align: right;
+  padding-top: 5px;
+  padding-right: 20px;
+  margin: 0;
+}
+nav li {
+  display: inline;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-right: 1px solid #ffffff;
+}
+
+/* 背景画像の透過処理 */
+.main_mist {
+  background: rgba(255, 255, 255, 0.5);
+  background-size: cover;
+}
+.title_mist {
+  height: 200px;
+  background: rgba(255, 255, 255, 0.5);
+  background-size: cover;
+}
+.title_catch {
+  font-family: 'Noto Serif SC', serif;
+  margin-top: 25px;
+  padding: 10px;
+  border: 2px solid #d8d8d8;
+  background-image: url('inaho.jpeg');
+  background-size: cover;
+}
+
+/* タイトルとキャチコピー */
+.title {
+  margin-top: 0px;
+  margin-left: 20px;
+  text-align: left;
+  font-size: 60px;
+  color:white;
+  text-shadow: 3px 3px 2px #ff3c00;
+}
+.catch {
+  text-align: right;
+  margin-right: 20px;
+  padding-bottom: 15px;
+  font-size: 25px;
+  color: rgb(255, 249, 217);
+  text-shadow: 2px 2px 2px #222222;
+}
+
+/* サイト情報と入力欄 */
+.inf_form {
+  text-align: center;
+  /* min-width: 660px; */
+}
+.information {
+  width: 50%;
+  height: 75px;
+  list-style: none;
+  margin: 20px auto;
+  padding: 0 40px;
+  background: rgba(53, 250, 184, 0.5);
+  border-radius: 0.7em;
+  outline: 2px solid rgb(92, 255, 201);
+  outline-offset: 5px;
+}
+.information li {
+  line-height: 1.6em;
+  background: url('kome_haigamai.png') no-repeat;
+  background-size: 20px;
+  text-align: center;
+}
+/* form */
+.form {
+  width: 800px;
+  padding: 30px;
+  margin: 30px;
+  background:rgba(255, 255, 255, 0.7);
+}
+.input_text {
+  width: 100%;
+}
+input[type="text"] {
+  margin: 10px;
+  width: auto;
+  height: 30px;
+  border-radius: 0.7em;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 16px;
+  background:rgba(255, 255, 255, 0.7);
+}
+.range{
+  height: 33px;
+  border: 2px solid #d8d8d8;
+  background:rgba(255, 255, 255, 0.7);
+  border-radius: 0.7em;
+  font-size: 16px;
+}
+
+/* お店情報の構成 */
+.store {
+  text-align: center;
+  width: 90%;
+  margin: 10px 30px;
+}
+.store_top {
+  width: 100%;
+}
+.store_middle {
+  clear: left;
+  margin: 10px 5px;
+}
+.store_bottom {
+  clear: both;
+  display: block;
+  padding: 10px;
+  margin: 20px;
+}
+/* お店画像 */
+.img {
+  float: left;
+}
+/* 店名とカテゴリー */
+.store_name {
+  margin: 10px 10px 10px 10px;
+  padding: 10px;
+  color: crimson;
+  font-size: 150%;
+  background: rgba(90, 101, 255, 0.5);
+  border-radius: 0.7em;
+  overflow: hidden;
+  float: left;
+}
+.store_category {
+  padding-top: 20px;
+  text-shadow: 1px 1px 1px #222222;
+  font-size: 20px;
+  color: rgb(159, 235, 235);
+  margin: 20px;
+}
+/* お店情報 */
+.store_table {
+  display: inline-block;
+	word-break: break-word;
+	word-wrap: break-word;
+  margin: 20px;
+  padding: 5px;
+  background-color: #668ad891;
+  border-radius: 0.7em;
+}
+.store_inf1 {
+  width: 100px;
+  text-align: left;
+}
+.store_inf2 {
+  text-align: left;
+}
+
+/* 検索Hit件数表示 */
+.thc_result2 {
+  margin: 0;
+  padding: 7px;
+  width: 100%;
+  height: 100%;
+  font-size: 35px;
+}
+.now_page {
+  margin-top: 0px;
+}
+.thc_space {
+  width: 150px;
+  height: 150px;
+  margin: 20px auto;
+  background-color: rgba(60, 242, 255, 0.5);
+  border-radius: 100%;
+  border: outset 3px #FFF;
+}
+.thc_space:hover {
+  background-color: rgba(0, 204, 255, 0.5);
+  border: inset 3px #FFF;
+}
+.thc_space a {
+  padding-top: 43px;
+  height: 100%;
+  text-shadow: 1px 1px 1px white;
+  color: rgb(70, 88, 255);
+}
+.thc_space a:hover {
+  color: rgb(4, 0, 255);
+}
+.search {
+  display: inline-block;
+  height: 100px;
+  width: 150px;
+  font-weight: bold;
+  font-size: 30px;
+  color: black;
+}
+
+/* ページ操作 */
+.page_numbers {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 3px;
+}
+.page_numbers button {
+  display: inline-block;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: bold;
+  color: #67c5ff;
+  border: solid 2px #67c5ff;
+  border-radius: 3px;
+  transition: .4s;
+}
+.page_numbers button:hover {
+  background: #67c5ff;
+  color: white;
+}
+
+/* footer */
+footer {
+  text-align: center;
+  background-color: #668ad8;
+}
+footer a {
+  font-weight: bold;
+  color: white;
+}
+footer a:hover {
+  color: #66d892;
+}
+
+@media(max-width:660px) {
+  .title {
+    font-size: 40px;
+  }
+  .catch {
+    font-size: 20px;
+  }
+  nav ul {
+    font-size: 10px;
+  }
+  .information li {
+    text-align: center;
+    font-size: 11px;
+    background: none;
+  }
+  .img {
+    float: none;
+  }
+}

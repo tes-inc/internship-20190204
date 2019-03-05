@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+  <link rel="stylesheet" href="main.css">
+  <link href="https://fonts.googleapis.com/css?family=Kosugi+Maru|Noto+Serif+SC" rel="stylesheet">
+  <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous">
+  </script>
+
+  <title>resNavi</title>
+</head>
+<body>
+  <div class="header_in">
+    <header>
+      <a href="http://127.0.0.1:8080/kouyama/resNavi/" class="header_logo">グールグルなび</a>
+      <nav>
+        <ul class="page_button hide">
+          <li><a href="#" class="return_page">前のページ</a></li>
+          <li><a href="#" class="next_page">次のページ</a></li>
+          <li><a href="#page_bottom" id="page_bottom">いちばんした</a></li>
+        </ul>
+      </nav>
+    </header>
+  </div>
+
+  <div class="main main_mist">
+    <div class="title_catch">
+      <div class="title_mist">
+        <p id="title" class="title">グールグルなび</p>
+        <p id="catch" class="catch">〜 OK!ぐーるぐる 〜</p>
+      </div>
+    </div>
+    <div class="inf_form">
+      <ul class="information">
+        <div id="thc_result" class="thc_result">
+          <li>レストラン検索サイトです！</li>
+          <li>店名やフリーワードで検索ができます</li>
+          <li>範囲を選ぶと近場のお店も探せますよ</li>
+        </div>
+      </ul>
+      <form method="GET">
+        <div class="input_text">
+          <span>
+            <input id="search_name" class="search_name" name="name" type="text" placeholder="店名を入力">
+          </span>
+          <span>
+            <input id="free_word" class="free_word" name="freeword" type="text" placeholder="フリーワード">
+          </span>
+          <span>
+            <select class="range" id="range" name="range">
+              <option value="0" selected>はんい</option>
+              <option value="1">300m以内</option>
+              <option value="2">500m以内</option>
+              <option value="3">1000m以内</option>
+              <option value="4">2000m以内</option>
+              <option value="5">3000m以内</option>
+            </select>
+          </span>
+        </div>
+        <div class="thc_space">
+          <a href="#" id="search" class="search animated pulse infinite">
+              Let's<br>ぐるぐる!
+          </a>
+        </div>
+      </form>
+    </div>
+    <div id="search_results" class="search_results"></div>
+    <div id="page_numbers" class="page_numbers"></div>
+    <footer class="page_button hide">
+      <a href="#" class="return_page">◀︎ </a>
+      <a href="#">トップへ戻る</a>
+      <a href="#" class="next_page"> ▶︎</a>
+    </footer>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
