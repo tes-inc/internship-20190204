@@ -17,6 +17,9 @@
 		},
 		{
 			"path": "movie"
+		},
+		{
+			"path": "gourmetSearch"
 		}
 	],
 	"settings": {}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>GourmetSearch</title>
+  <link rel="stylesheet" href="main.css">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" >
+  <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css" type="text/css" />
+  <link href="https://fonts.googleapis.com/css?family=Kosugi+Maru|Lobster" rel="stylesheet">
+</head>
+<body>
+  <div id="main">
+    <div id="box">
+      <strong>GourmetSearch</strong><br>
+        <input  type="text" name="" id="shopName" placeholder="店名検索">
+        <input  type="text" name="" id="freeWord" placeholder="キーワード検索">
+        <button id="btnSearch" type="button">Find!!</button>
+        <button id="btnGpsSearch" type="button">Near!!</button>
+    </div>
+    <div id="result">
+      <div id="offsetPage">
+
+      </div>
+      <div id="kekka">
+        <button id="back" type="submit"><i class="fa fa-arrow-left fa-2x" aria-hidden="true"></i></button>
+        <button id="next" type="submit"><i class="fa fa-arrow-right fa-2x" aria-hidden="true"></i></button>
+        <button id="moreBack"><i class="fa fa-angle-double-left fa-3x" aria-hidden="true"></i></button>
+        <button id="moreNext"><i class="fa fa-angle-double-right fa-3x" aria-hidden="true"></i></button>
+      </div>
+      <table>
+
+      </table>
+    </div>
+    <footer>Supported by <a href="https://api.gnavi.co.jp/api/scope/" target="_blank">ぐるなびWebService</a></footer>
+    <div id="page_top">
+      <a href="#"></a>
+    </div>
+  </div>
+  <script src="index.js"></script>
+</body>
+</html>
