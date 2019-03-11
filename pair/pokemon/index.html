@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="main.css">
+  <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/pokeapi-js-wrapper/dist/index.js"></script>
+
+  <title>ポケモン図鑑</title>
+</head>
+<body>
+  <div id="mainWrap">
+    <div id="leftList">
+      <ul>
+        <button @click="click4">◀︎</button>
+        <button @click="click3">▶︎</button>
+
+        <li v-for="pokename in pokenames"><a href="javascript:void(0)" type="button" class="pokename" @click="click(pokename)">{{pokename}}</a></li>
+      </ul>
+    </div>
+    <div id="rightWrap">
+      <div id="topBox">
+        <div id="pokeImg">
+          <a href="javascript:void(0)" ><img :src="sprites_default" alt=""><br>
+          <a href="javascript:void(0)" @click="click2(sprites_front_default)"><img :src="sprites_front_default" alt="" class="small"></a>
+          <a href="javascript:void(0)" @click="click2(sprites_female)"><img :src="sprites_female" alt="" class="small"></a>
+          <a href="javascript:void(0)" @click="click2(sprites_shiny)"><img :src="sprites_shiny" alt="" class="small"></a>
+          <a href="javascript:void(0)" @click="click2(sprites_shiny_female)"><img :src="sprites_shiny_female" alt="" class="small"></a>
+        </div>
+        <div>
+          <div id="status">
+            <table>
+              <tr>
+                <th>No.{{id}}</th>
+                <th>{{name}}</th>
+              </tr>
+              <tr>
+                <td>height:{{height}}</td>
+                <td>weight:{{weight}}</td>
+              </tr>
+              <tr>
+                <td>type1:{{type1}}</td>
+                <td v-if="type2">type2:{{type2}}</td>
+                <td v-else="type2">no type2</td>
+              </tr>
+              <tr>
+                <td>とくせい1:{{ability1}}</td>
+                <td>とくせい2:{{ability2}}</td>
+              </tr>
+              <tr>
+                <td>{{genera}}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div id="bottomInfo">
+        <p>{{flavor_text}}</p>
+        <a href="javascript:void(0)" @click="click(a)"><img :src="evolve1" alt="" class="sinka-img" :v-if="evolve1"></a>
+        <a href="javascript:void(0)" @click="click(b)"><img :src="evolve2" alt="" class="sinka-img" :v-if="evolve2"></a>
+        <a href="javascript:void(0)" @click="click(c)"><img :src="evolve3" alt="" class="sinka-img" :v-if="evolve3"></a>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
