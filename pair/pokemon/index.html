@@ -6,56 +6,66 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="main.css">
   <script
-  src="https://code.jquery.com/jquery-3.3.1.min.js"
-  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-  crossorigin="anonymous">
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous">
   </script>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script src="https://unpkg.com/pokeapi-js-wrapper/dist/index.js"></script>
-
+  <link href="https://fonts.googleapis.com/css?family=Poppins:700i" rel="stylesheet">
   <title>ポケモン図鑑</title>
 </head>
 <body>
   <div id="mainWrap">
     <div id="leftList">
       <ul>
-        <button @click="click4">◀︎</button>
-        <button @click="click3">▶︎</button>
-
-        <li v-for="pokename in pokenames"><a href="javascript:void(0)" type="button" class="pokename" @click="click(pokename)">{{pokename}}</a></li>
+        <a class="listPage previousPage" v-bind:class='{h : previousPage === null, s : previousPage != null}' href="javascript:void(0)" @click="click4">▲</a>
+        <li v-for="pokename in name_japa"><span class="sankaku"></span><a href="javascript:void(0)" type="button" class="pokename strong" @click="click(pokename.name2)">{{pokename.name}}</a></li>
+        <a class="listPage nextPage" v-bind:class='{h : nextPage === null, s : nextPage != null}'href="javascript:void(0)" @click="click3">▼</a>
       </ul>
     </div>
     <div id="rightWrap">
       <div id="topBox">
         <div id="pokeImg">
-          <a href="javascript:void(0)" ><img :src="sprites_default" alt=""><br>
-          <a href="javascript:void(0)" @click="click2(sprites_front_default)"><img :src="sprites_front_default" alt="" class="small"></a>
-          <a href="javascript:void(0)" @click="click2(sprites_female)"><img :src="sprites_female" alt="" class="small"></a>
-          <a href="javascript:void(0)" @click="click2(sprites_shiny)"><img :src="sprites_shiny" alt="" class="small"></a>
-          <a href="javascript:void(0)" @click="click2(sprites_shiny_female)"><img :src="sprites_shiny_female" alt="" class="small"></a>
+          <a href="javascript:void(0)" ><img :src="sprites_default ? sprites_default :'pokeBall.PNG ' " alt="" height="250px" width="250px"><br>
+          <a href="javascript:void(0)" @click="click2(sprites_front_default)"><img :src="sprites_front_default ? sprites_front_default :'pokeBall.PNG ' " alt="" class="small"></a>
+          <a href="javascript:void(0)" @click="click2(sprites_female)"><img :src="sprites_female ? sprites_female : 'pokeBall.PNG' " alt="" class="small"></a>
+          <a href="javascript:void(0)" @click="click2(sprites_shiny)"><img :src="sprites_shiny ? sprites_shiny : 'pokeBall.PNG' " alt="" class="small"></a>
+          <a href="javascript:void(0)" @click="click2(sprites_shiny_female)"><img :src="sprites_shiny_female ? sprites_shiny_female : 'pokeBall.PNG' " alt="" class="small"></a>
         </div>
         <div>
           <div id="status">
             <table>
               <tr>
-                <th>No.{{id}}</th>
-                <th>{{name}}</th>
+                <td class="strong">No.{{id}} {{name}}</td>
               </tr>
               <tr>
-                <td>height:{{height}}</td>
-                <td>weight:{{weight}}</td>
+                <td colspan="2">{{genera}}</td>
               </tr>
               <tr>
-                <td>type1:{{type1}}</td>
-                <td v-if="type2">type2:{{type2}}</td>
-                <td v-else="type2">no type2</td>
+                <td>たかさ</td>
+                <td class="strong">{{height}}m</td>
               </tr>
               <tr>
-                <td>とくせい1:{{ability1}}</td>
-                <td>とくせい2:{{ability2}}</td>
+                <td>おもさ</td>
+                <td class="strong">{{weight}}kg</td>
               </tr>
               <tr>
-                <td>{{genera}}</td>
+                <td>タイプ１</td>
+                <td class="strong">{{type1}}</td>
+              </tr>
+              <tr>
+                  <td>タイプ２</td>
+                  <td v-if="type2 != ''" class="strong">{{type2}}</td>
+                  <td v-else class="strong">なし</td>
+              </tr>
+              <tr>
+                <td>とくせい1</td>
+                <td class="strong">{{ability1}}</td>
+              </tr>
+              <tr>
+                <td>とくせい2</td>
+                <td class="strong">{{ability2}}</td>
               </tr>
             </table>
           </div>
@@ -63,12 +73,13 @@
       </div>
       <div id="bottomInfo">
         <p>{{flavor_text}}</p>
-        <a href="javascript:void(0)" @click="click(a)"><img :src="evolve1" alt="" class="sinka-img" :v-if="evolve1"></a>
-        <a href="javascript:void(0)" @click="click(b)"><img :src="evolve2" alt="" class="sinka-img" :v-if="evolve2"></a>
-        <a href="javascript:void(0)" @click="click(c)"><img :src="evolve3" alt="" class="sinka-img" :v-if="evolve3"></a>
+        <a href="javascript:void(0)" @click="click(c_evo1)"><img :src="evolve1" alt="" class="sinka-img" :v-if="evolve1"></a>
+        <a href="javascript:void(0)" v-for="evolve in evolve2" @click="click(evolve.name)"><img :src="evolve.url" alt="" class="sinka-img" :v-if="evolve2"></a>
+        <a href="javascript:void(0)" @click="click(c_evo3)"><img :src="evolve3" alt="" class="sinka-img" :v-if="evolve3"></a>
       </div>
     </div>
   </div>
+  <footer>GAME POKE DEX</footer>
   <script src="script.js"></script>
 </body>
 </html>
