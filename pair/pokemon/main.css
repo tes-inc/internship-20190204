@@ -1,0 +1,183 @@
+body{
+  background-color: rgb(179, 187, 137);
+  border: 150px solid  rgb(22, 22, 22);
+  border-left:300px solid rgb(22, 22, 22);
+  border-right: 300px solid rgb(22, 22, 22);
+  margin:0;
+}
+#mainWrap{
+  width: auto;
+  height: 650px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+a{
+  text-decoration: none;
+  color: black;
+}
+
+/* 左側ポケモン名前リスト */
+#leftList{
+  width: 110px;
+  height: 550px;
+  padding: 25px;
+  border: double;
+  border-radius: 5px;
+  box-shadow: 0px 2px,0px 2px inset;
+}
+ul{
+  padding-left: 0;
+  text-align: right;
+}
+ul li{
+  width: 110px;
+  text-align: initial;
+  list-style-type: none ;
+}
+ul li:hover > .sankaku::before{
+  visibility: visible;
+}
+
+.h{
+  visibility: hidden;
+}
+
+.s{
+  visibility: visible;
+}
+.sankaku::before{
+  content: '▶︎';
+  visibility: hidden;
+}
+.listPage{
+  text-align: right;
+}
+.listPage:hover{
+  color: white;
+}
+
+/* 右側上段ポケモン情報 */
+#rightWrap{
+  margin-left: 20px;
+  text-align: center;
+}
+#topBox{
+  height: 350px;
+  margin: auto;
+  display: flex;
+  align-content: stretch;
+}
+#pokeImg{
+  height: 250px;
+  /* margin-left: 100px;
+  margin-right: 100px;
+  margin-top: 100px; */
+}
+.small{
+  height: 50px;
+}
+#status{
+  margin-top: 40px;
+  text-align: initial;
+  width: 300px;
+}
+.strong{
+  font-weight: bold;
+}
+table td{
+  width: 150px;
+}
+
+/* 右側下段ポケモン説明文と進化情報 */
+#bottomInfo{
+  width: 550px;
+  display: inline-block;
+  text-align: center;
+}
+#bottomInfo img{
+  height: 120px;
+  width: 120px;
+}
+
+footer {
+  position: absolute;
+  top: 780px;
+  left:22%;
+  width: 100%;
+  height: 100px;
+  font-size: 130px;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+}
+footer::before{
+  content: '●';
+  color: red;
+  font-size: 55%;
+  position: absolute;
+  top: -580px;
+  left: -19%;
+}
+#mainWrap::before{
+  content: 'POWER';
+  color:gray;
+  font-size: 50px;
+  position: absolute;
+  top: 290px;
+  left: 3%;
+}
+
+  /*1360px以下で適用する内容*/
+@media screen and (max-width:1360px){
+  body{
+    background-color: rgb(179, 187, 137);
+    border: 100px solid  rgb(22, 22, 22);
+    border-left:150px solid rgb(22, 22, 22);
+    border-right: 150px solid rgb(22, 22, 22);
+  }
+
+  #mainWrap::before{
+    content: 'POWER';
+    color:gray;
+    font-size: 25px;
+    position: absolute;
+    top: 250px;
+    left: 3%;
+  }
+
+  footer::before{
+    content: '●';
+    color: red;
+    font-size: 26%;
+    position: absolute;
+    top: -530px;
+    left: -23%;
+  }
+
+  footer {
+    position: absolute;
+    top: 750px;
+    left:27%;
+    width: 100%;
+    height: 100px;
+    font-size: 75px;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+  }
+}
+
+  /*1360px以下で適用する内容*/
+  @media screen and (max-width:1050px){
+    body{
+      border: none;
+    }
+
+    #mainWrap::before,footer::before{
+      content: none;
+    }
+
+    footer{
+      visibility: hidden;
+    }
+  }
